@@ -1,6 +1,6 @@
 {
   "auth": {
-    "awselectriciansofficab912dec": {
+    "awselectriciansoffice": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
