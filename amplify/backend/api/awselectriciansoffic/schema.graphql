@@ -1,0 +1,10 @@
+type Company @model {
+  id: ID!
+  name: String!
+}
+
+type Customer @model {
+  id: ID!
+  name: String!
+  companyID: ID
+}

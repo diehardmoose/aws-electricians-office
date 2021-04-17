@@ -3,8 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@aws-amplify/ui-react": "^1.0.7",
     "@aws-amplify/auth": "^3.4.30",
+    "@aws-amplify/datastore": "^2.9.16",
+    "@aws-amplify/ui-react": "^1.0.7",
     "@testing-library/jest-dom": "^5.11.10",
     "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^12.8.3",
@@ -30,7 +31,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "amplify-modelgen": "node amplify\\scripts\\amplify-modelgen.js",
+    "amplify-push": "node amplify\\scripts\\amplify-push.js"    
   },
   "eslintConfig": {
     "extends": [

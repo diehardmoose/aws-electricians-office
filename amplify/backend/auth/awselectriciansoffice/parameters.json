@@ -1,7 +1,7 @@
 {
     "identityPoolName": "testAuthIdentityPool",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "awselea61b8cdc",
+    "resourceNameTruncated": "awsele0108cbf0",
     "userPoolName": "awselectriciansoffice",
     "autoVerifiedAttributes": [
         "phone_number"
@@ -29,9 +29,9 @@
     "userpoolClientRefreshTokenValidity": 30,
     "userpoolClientWriteAttributes": [],
     "userpoolClientReadAttributes": [],
-    "userpoolClientLambdaRole": "awselea61b8cdc_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "awsele0108cbf0_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "a61b8cdc",
+    "sharedId": "0108cbf0",
     "resourceName": "awselectriciansoffice",
     "authSelections": "identityPoolAndUserPool",
     "authRoleArn": {
