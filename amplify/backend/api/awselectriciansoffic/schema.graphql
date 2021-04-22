@@ -1,10 +1,11 @@
-type Company @model {
+type Company @model @auth(rules: [{allow: public}]) {
   id: ID!
   name: String!
 }
 
-type Customer @model {
+type Customer @model @auth(rules: [{allow: public}]) {
   id: ID!
   name: String!
   companyID: ID
 }
+ 

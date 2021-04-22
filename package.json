@@ -10,8 +10,10 @@
     "@testing-library/react": "^11.2.6",
     "@testing-library/user-event": "^12.8.3",
     "aws-amplify": "^3.3.27",
+    "aws-sdk": "^2.889.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
     "web-vitals": "^0.2.4",
     "workbox-background-sync": "^5.1.4",
@@ -33,7 +35,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "amplify-modelgen": "node amplify\\scripts\\amplify-modelgen.js",
-    "amplify-push": "node amplify\\scripts\\amplify-push.js"    
+    "amplify-push": "node amplify\\scripts\\amplify-push.js"
   },
   "eslintConfig": {
     "extends": [
