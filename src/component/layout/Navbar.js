@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 
 import SignedInLinks from './SignedInLinks'
 import SignedOutLinks from './SignedOutLinks' 
@@ -18,6 +18,7 @@ const Navbar = (props) => {
     useEffect(() =>{
         checkUser()
         setAuthListener()
+        
         //links = user ? <SignedInLinks  /> : <SignedOutLinks />
     },[])
 
@@ -44,6 +45,8 @@ const Navbar = (props) => {
             }
         });
     }
+
+    //if (!user) return <Redirect to='/signin' />
 
     return (
 
