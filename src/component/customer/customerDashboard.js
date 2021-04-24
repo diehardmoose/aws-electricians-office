@@ -1,22 +1,26 @@
 import React, { Component } from 'react'
 import CustomerList from './customerList'
-import { Redirect } from 'react-router-dom'
+import { Redirect, withRouter } from 'react-router-dom'
 import { NavLink } from 'react-router-dom'
 
 import { withAuthenticator } from '@aws-amplify/ui-react'
 
-class CustomerDashboard extends Component{
-    render(){
+const CustomerDashboard  = ({authState}) => {
+    
 
         const customers =''
         //const {customers, auth } = this.props
+
         
         //if (!auth.isLoaded) return <div>Loading...</div>        
         //if (!auth.uid) return <Redirect to='/signin' />
+        if (authState == 'Checking') return <div>Loading...</div>        
+        if (authState == 'LoggedOut') return <Redirect to='/signin' />
 
         return(
             <div className="customerdash container">
                 <div className="row">
+                    <h4>Customer list</h4>
                     <div className="col s12 m6">
                     <CustomerList customers={customers} />
                     </div>
@@ -27,10 +31,10 @@ class CustomerDashboard extends Component{
                 </div>
             </div>
         )
-    }
+    
 }
 
 
 
 //export default CustomerDashboard
-export default withAuthenticator(CustomerDashboard);
+export default withRouter(CustomerDashboard);

@@ -1,18 +1,63 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react'
+
 import './App.css';
-import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react'
-import { Auth, API } from 'aws-amplify';
+//import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react'
+import { Auth, API, Hub } from 'aws-amplify';
 import { DataStore } from '@aws-amplify/datastore'
 import { Company, Message} from './models'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Navbar from './component/layout/Navbar'
 import CustomerDashboard from './component/customer/customerDashboard'
+import SignIn from './component/auth/signIn'
+
 
 
 
 
 function App() {
+
+  const [authState, updateAuthState] = useState('Checking')
+
+
+  const [user, updateUser] = useState(null)
+  
+  useEffect(() =>{
+      updateAuthState('Checking')
+      checkUser()
+      setAuthListener()
+      
+      //links = user ? <SignedInLinks  /> : <SignedOutLinks />
+  },[])
+
+  async function checkUser(){
+      try{
+          const user = await Auth.currentAuthenticatedUser()
+          updateAuthState('LoggedIn')
+          updateUser(user)
+
+      } catch (err){
+          updateAuthState('LoggedOut')
+          updateUser(null)
+      }
+
+  }
+
+  async function setAuthListener() {
+      Hub.listen('auth', (data) => {
+          switch (data.payload.event) {
+              case 'signIn':
+                  updateAuthState('LoggedIn')
+                  checkUser()
+              break;
+              case 'signOut':
+                  updateAuthState('LoggedOut')
+                  checkUser()
+              break;                
+          }
+      });
+  }
+
+
 
   async function fetchUserInfo(setCompany) {
     // get the id token of the signed in user
@@ -67,15 +112,16 @@ function App() {
   return (
     <BrowserRouter>
       <div className="App">
-        <Navbar />
+        <Navbar authState={authState} />
         <button onClick={fetchUserInfo} >Show company</button>
         <button onClick={setCompany} >Set company</button>
         <button onClick={ () => listEditors(10)} >User list</button>        
         <Switch>
         
-            <Route exact path='/' component={CustomerDashboard} />
-            {/*
+            <Route exact path='/' render={() =>  <CustomerDashboard authState={authState}  />         } />
+           
             <Route path='/signin' component={SignIn} />
+            {/*
             <Route path='/signup' component={SignUp} />
             <Route path='/createcustomer' component={CreateCustomer} />          
             <Route path='/updatecustomer/:id' component={UpdateCustomer} />      */}              

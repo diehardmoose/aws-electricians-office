@@ -11,7 +11,10 @@ import { Auth, Hub } from 'aws-amplify'
 const Navbar = (props) => {
     //const { auth, profile } = props;
     //const links = auth.uid ? <SignedInLinks profile={profile} /> : <SignedOutLinks />
-    
+    //const links =  <SignedOutLinks />
+    //const links = props.authState =='LoggedIn' ? <SignedInLinks profile={profile} /> : <SignedOutLinks />
+    const links = props.authState =='LoggedIn' ? <SignedInLinks  /> : <SignedOutLinks />
+/*    
     const [user, updateUser] = useState(null)
     const links = user ? <SignedInLinks  /> : <SignedOutLinks />
 
@@ -45,14 +48,14 @@ const Navbar = (props) => {
             }
         });
     }
-
+*/
     //if (!user) return <Redirect to='/signin' />
 
     return (
 
         <nav>
             <div className="nav-wrapper blue darken-3">
-                <a href="#" className="brand-logo left">The Electricians Office</a>
+                <a href="#" className="brand-logo left">The Electricians Office</a> 
                 {links}
             </div>
         </nav>        
