@@ -15,7 +15,7 @@ const CustomerList = ({customers}) => {
               <i className="material-icons circle green">insert_chart</i>
 
               
-              <span className="title">{customer.forename} {customer.surname}</span>
+              <span className="title">{customer.name} {customer.surname}</span>
               <p>{customer.email}<br/>
               {customer.phone}
               </p>

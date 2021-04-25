@@ -8,6 +8,7 @@ import reportWebVitals from './reportWebVitals';
 import Amplify from 'aws-amplify';
 import config from './aws-exports';
 Amplify.configure(config);
+Amplify.Logger.LOG_LEVEL = 'DEBUG';
 
 ReactDOM.render(
   <React.StrictMode>

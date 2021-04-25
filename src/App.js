@@ -4,7 +4,7 @@ import './App.css';
 //import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react'
 import { Auth, API, Hub } from 'aws-amplify';
 import { DataStore } from '@aws-amplify/datastore'
-import { Company, Message} from './models'
+import { Company, Customer} from './models'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Navbar from './component/layout/Navbar'
 import CustomerDashboard from './component/customer/customerDashboard'
@@ -109,12 +109,24 @@ function App() {
     //setTenant(tenant);
   }
 
+  async function createCustomer() {
+
+    // create company
+    const newCustomer = await DataStore.save(
+      new Customer({
+        name: "Tom Stone",
+        companyID:'0'
+      })
+    );   
+  }
+
   return (
     <BrowserRouter>
       <div className="App">
         <Navbar authState={authState} />
         <button onClick={fetchUserInfo} >Show company</button>
         <button onClick={setCompany} >Set company</button>
+        <button onClick={createCustomer} >Create Customer</button>
         <button onClick={ () => listEditors(10)} >User list</button>        
         <Switch>
         
