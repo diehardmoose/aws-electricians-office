@@ -15,12 +15,6 @@
       "auth": {
         "awselectriciansofficab912dec": {},
         "awselectriciansoffice": {}
-      },
-      "function": {
-        "AdminQueries8f57d0c5": {
-          "deploymentBucketName": "amplify-awselectriciansoffic-staging-172908-deployment",
-          "s3Key": "amplify-builds/AdminQueries8f57d0c5-36337549337755384d35-build.zip"
-        }
       }
     }
   }

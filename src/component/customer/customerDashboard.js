@@ -14,7 +14,7 @@ const CustomerDashboard  = ({authState}) => {
         //const {customers, auth } = this.props
 
         useEffect(() => { 
-            console.log('test')
+        //    console.log('test')
             fetchCustomers()
             const subscription = DataStore.observe(Customer).subscribe(() => fetchCustomers())
             return () => subscription.unsubscribe();
@@ -24,6 +24,7 @@ const CustomerDashboard  = ({authState}) => {
             const lclcustomers = await DataStore.query(Customer)
             //console.log(customers)
             updateCustomers(lclcustomers)
+            //fetchCustomers()
             //console.log(customers)
             //console.log('test')
           }
@@ -36,7 +37,7 @@ const CustomerDashboard  = ({authState}) => {
         return(
             <div className="customerdash container">
                 <div className="row">
-                    <h4>Customer list</h4>
+                    <h4>Customer list</h4>  <button className="btn pink lighten-1 z-depth-0" onClick={fetchCustomers} >Update</button>
                     <div className="col s12 m6">
                     <CustomerList customers={customers} />
                     </div>

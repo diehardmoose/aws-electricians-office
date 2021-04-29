@@ -8,7 +8,9 @@ import { Company, Customer} from './models'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Navbar from './component/layout/Navbar'
 import CustomerDashboard from './component/customer/customerDashboard'
+import UpdateCustomer from './component/customer/updateCustomer'
 import SignIn from './component/auth/signIn'
+
 
 
 
@@ -50,6 +52,7 @@ function App() {
                   checkUser()
               break;
               case 'signOut':
+                  DataStore.clear();
                   updateAuthState('LoggedOut')
                   checkUser()
               break;                
@@ -114,7 +117,8 @@ function App() {
     // create company
     const newCustomer = await DataStore.save(
       new Customer({
-        name: "Tom Stone",
+        name: "Tom",
+        surname: "Stone",
         companyID:'0'
       })
     );   
@@ -131,8 +135,8 @@ function App() {
         <Switch>
         
             <Route exact path='/' render={() =>  <CustomerDashboard authState={authState}  />         } />
-           
             <Route path='/signin' component={SignIn} />
+            <Route path='/updatecustomer/:id' component={UpdateCustomer} />                                
             {/*
             <Route path='/signup' component={SignUp} />
             <Route path='/createcustomer' component={CreateCustomer} />          

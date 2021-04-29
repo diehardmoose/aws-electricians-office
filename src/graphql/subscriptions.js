@@ -6,6 +6,9 @@ export const onCreateCompany = /* GraphQL */ `
     onCreateCompany {
       id
       name
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -16,6 +19,9 @@ export const onUpdateCompany = /* GraphQL */ `
     onUpdateCompany {
       id
       name
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -26,6 +32,9 @@ export const onDeleteCompany = /* GraphQL */ `
     onDeleteCompany {
       id
       name
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -36,7 +45,11 @@ export const onCreateCustomer = /* GraphQL */ `
     onCreateCustomer {
       id
       name
+      surname
       companyID
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -47,7 +60,11 @@ export const onUpdateCustomer = /* GraphQL */ `
     onUpdateCustomer {
       id
       name
+      surname
       companyID
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -58,7 +75,11 @@ export const onDeleteCustomer = /* GraphQL */ `
     onDeleteCustomer {
       id
       name
+      surname
       companyID
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
