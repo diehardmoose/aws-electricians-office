@@ -37,7 +37,7 @@ const CustomerDashboard  = ({authState}) => {
         return(
             <div className="customerdash container">
                 <div className="row">
-                    <h4>Customer list</h4>  <button className="btn pink lighten-1 z-depth-0" onClick={fetchCustomers} >Update</button>
+                    <h4>Customer list</h4>  
                     <div className="col s12 m6">
                     <CustomerList customers={customers} />
                     </div>

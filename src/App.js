@@ -5,10 +5,12 @@ import './App.css';
 import { Auth, API, Hub } from 'aws-amplify';
 import { DataStore } from '@aws-amplify/datastore'
 import { Company, Customer} from './models'
-import { BrowserRouter, Switch, Route } from 'react-router-dom'
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 import Navbar from './component/layout/Navbar'
 import CustomerDashboard from './component/customer/customerDashboard'
+import QuoteDashboard from './component/quote/QuoteDashboard'
 import UpdateCustomer from './component/customer/updateCustomer'
+import CreateCustomer from './component/customer/createCustomer'
 import SignIn from './component/auth/signIn'
 
 
@@ -133,10 +135,18 @@ function App() {
         <button onClick={createCustomer} >Create Customer</button>
         <button onClick={ () => listEditors(10)} >User list</button>        
         <Switch>
-        
-            <Route exact path='/' render={() =>  <CustomerDashboard authState={authState}  />         } />
             <Route path='/signin' component={SignIn} />
-            <Route path='/updatecustomer/:id' component={UpdateCustomer} />                                
+            {
+              authState=='LoggedIn' ?
+              <>
+              <Route exact path='/quoteDashboard'  component={QuoteDashboard} /> 
+              <Route exact path='/' render={() =>  <CustomerDashboard authState={authState}  />         } />
+              <Route path='/updatecustomer/:id' component={UpdateCustomer} />                                
+              <Route path='/createcustomer' component={CreateCustomer} />                                
+
+              </>: <Redirect to="/signin" />
+            }
+
             {/*
             <Route path='/signup' component={SignUp} />
             <Route path='/createcustomer' component={CreateCustomer} />          
