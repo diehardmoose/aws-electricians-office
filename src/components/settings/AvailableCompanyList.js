@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import moment from "moment";
 import PerfectScrollbar from "react-perfect-scrollbar";
@@ -14,16 +14,21 @@ import {
   TablePagination,
   TableRow,
   Typography,
-  IconButton,
+  Button,
 } from "@material-ui/core";
 import getInitials from "../../utils/getInitials";
-import EditIcon from "@material-ui/icons/Edit";
 import { Link } from "react-router-dom";
+import { Auth } from "aws-amplify";
 
-const CustomerListResults = ({ customers, ...rest }) => {
+
+const AvailableCompanyList = ({ customers,companyID, ...rest }) => {
   const [selectedCustomerIds, setSelectedCustomerIds] = useState([]);
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(0);
+  const [currentCompany, setCurrentCompany] = useState('');
+  
+  
+  
 
   const handleSelectAll = (event) => {
     let newSelectedCustomerIds;
@@ -72,8 +77,28 @@ const CustomerListResults = ({ customers, ...rest }) => {
     setPage(newPage);
   };
 
+  async function changeCompany(newID) {
+    console.log(newID);
+
+    //update user details
+    const user = await Auth.currentAuthenticatedUser();
+    Auth.updateUserAttributes(user, { "custom:companyID": newID })
+      .then((result) => {
+        console.log(result);
+        setCurrentCompany(newID);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  useEffect(() => {
+ 
+    setCurrentCompany(companyID);
+ 
+  }, []);
+
   return (
     <Card {...rest}>
+        
       <PerfectScrollbar>
         <Box sx={{ minWidth: 1050 }}>
           <Table>
@@ -91,10 +116,7 @@ const CustomerListResults = ({ customers, ...rest }) => {
                   />
                 </TableCell>
                 <TableCell>Name</TableCell>
-                <TableCell>Email</TableCell>
-                <TableCell>Location</TableCell>
-                <TableCell>Phone</TableCell>
-                <TableCell>Edit</TableCell>
+                <TableCell>Select</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -119,22 +141,26 @@ const CustomerListResults = ({ customers, ...rest }) => {
                       }}
                     >
                       <Avatar src={customer.avatarUrl} sx={{ mr: 2 }}>
-                        {getInitials(customer.name + " " + customer.surname)}
+                        {getInitials(customer.name)}
                       </Avatar>
                       <Typography color="textPrimary" variant="body1">
-                        {customer.name} {customer.surname}
+                        {customer.name}
                       </Typography>
                     </Box>
                   </TableCell>
-                  <TableCell>Email</TableCell>
-                  <TableCell>address</TableCell>
-                  <TableCell>phone</TableCell>
+                  
                   <TableCell>
-                    <Link to={"/app/editcustomer/" + customer.id}>
-                      <IconButton color="inherit">
-                        <EditIcon />
-                      </IconButton>
-                    </Link>
+                  { customer.id == currentCompany ? <Typography color="textPrimary" variant="body1">Selected</Typography> :
+                    <Button
+                      onClick={() => changeCompany(customer.id)}
+                      color="primary"
+                      variant="contained"
+                    >
+                      Select
+                    </Button>
+                }
+                    
+                  
                   </TableCell>
                 </TableRow>
               ))}
@@ -155,8 +181,8 @@ const CustomerListResults = ({ customers, ...rest }) => {
   );
 };
 
-CustomerListResults.propTypes = {
+AvailableCompanyList.propTypes = {
   customers: PropTypes.array.isRequired,
 };
 
-export default CustomerListResults;
+export default AvailableCompanyList;

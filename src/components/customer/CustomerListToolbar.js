@@ -8,6 +8,7 @@ import {
   SvgIcon
 } from '@material-ui/core';
 import { Search as SearchIcon } from 'react-feather';
+import { Link } from 'react-router-dom'
 
 const CustomerListToolbar = (props) => (
   <Box {...props}>
@@ -18,12 +19,14 @@ const CustomerListToolbar = (props) => (
       }}
     >
 
-      <Button
-        color="primary"
-        variant="contained"
-      >
-        Add customer
-      </Button>
+      <Link to={'/app/addcustomer/'}> 
+        <Button
+          color="primary"
+          variant="contained"
+        >
+          Add customer
+        </Button>
+      </Link>
     </Box>
     <Box sx={{ mt: 3 }}>
       <Card>

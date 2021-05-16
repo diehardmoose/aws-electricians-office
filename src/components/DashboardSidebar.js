@@ -55,10 +55,15 @@ const items = [
     title: 'Certificates'
   },
   {
+    href: '/app/companysettings',
+    icon: SettingsIcon,
+    title: 'Company Settings'
+  },
+  {
     href: '/app/settings',
     icon: SettingsIcon,
     title: 'Settings'
-  },
+  },  
   {
     href: '/login',
     icon: LockIcon,
