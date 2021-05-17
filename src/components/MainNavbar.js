@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import {
   AppBar,
   Box,
-  Hidden,
   IconButton,
   Toolbar,
   Typography,
@@ -28,7 +27,7 @@ const MainNavbar = ({ onMobileNavOpen, ...rest }) => {
           </Typography>
         </RouterLink>
         <Box sx={{ flexGrow: 1 }} />
-        <Hidden lgDown>
+        {/*<Hidden lgDown>*/}
           <Link to={'/register/'}> 
             <Button
               color="primary"
@@ -45,15 +44,15 @@ const MainNavbar = ({ onMobileNavOpen, ...rest }) => {
               Sign In
             </Button>
           </ Link>
-        </Hidden>
-        <Hidden lgUp>
+        {/*</Hidden>
+        <Hidden lgUp>*/}
           <IconButton
             color="inherit"
             onClick={onMobileNavOpen}
           >
             <MenuIcon />
           </IconButton>
-        </Hidden>
+        {/*</Hidden>*/}
       </Toolbar>
     </AppBar>
   );

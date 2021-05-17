@@ -6,7 +6,6 @@ import {
   Box,
   Divider,
   Drawer,
-  Hidden,
   List,
   Typography
 } from '@material-ui/core';
@@ -148,8 +147,8 @@ const DashboardSidebar = ({ onMobileClose, openMobile }) => {
 
   return (
     <>
-      <Hidden lgUp>
-        <Drawer
+      {/*<Hidden lgUp>*/}
+        <Drawer sx={{ display: { lg: 'none', xs: 'block' } }} 
           anchor="left"
           onClose={onMobileClose}
           open={openMobile}
@@ -162,9 +161,9 @@ const DashboardSidebar = ({ onMobileClose, openMobile }) => {
         >
           {content}
         </Drawer>
-      </Hidden>
-      <Hidden lgDown>
-        <Drawer
+      {/*</Hidden>
+      <Hidden lgDown>*/}
+        <Drawer sx={{ display: { lg: 'block', xs: 'none' } }} 
           anchor="left"
           open
           variant="persistent"
@@ -178,7 +177,7 @@ const DashboardSidebar = ({ onMobileClose, openMobile }) => {
         >
           {content}
         </Drawer>
-      </Hidden>
+      {/*</Hidden>*/}
     </>
   );
 };

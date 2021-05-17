@@ -19,13 +19,14 @@ import {
 import getInitials from "../../utils/getInitials";
 import { Link } from "react-router-dom";
 import { Auth } from "aws-amplify";
+import { DataStore } from '@aws-amplify/datastore'
 
 
 const AvailableCompanyList = ({ customers,companyID, ...rest }) => {
   const [selectedCustomerIds, setSelectedCustomerIds] = useState([]);
   const [limit, setLimit] = useState(10);
   const [page, setPage] = useState(0);
-  const [currentCompany, setCurrentCompany] = useState('');
+  const [currentCompany, setCurrentCompany] = useState(companyID);
   
   
   
@@ -86,6 +87,7 @@ const AvailableCompanyList = ({ customers,companyID, ...rest }) => {
       .then((result) => {
         console.log(result);
         setCurrentCompany(newID);
+        DataStore.clear();
       })
       .catch((err) => console.log(err));
   };
@@ -150,7 +152,8 @@ const AvailableCompanyList = ({ customers,companyID, ...rest }) => {
                   </TableCell>
                   
                   <TableCell>
-                  { customer.id == currentCompany ? <Typography color="textPrimary" variant="body1">Selected</Typography> :
+                      
+                  { customer.id == companyID ? <Typography color="textPrimary" variant="body1">Selected</Typography> :
                     <Button
                       onClick={() => changeCompany(customer.id)}
                       color="primary"

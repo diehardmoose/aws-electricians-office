@@ -79,6 +79,10 @@ export const syncCustomers = /* GraphQL */ `
         id
         name
         surname
+        email
+        phone
+        mobile
+        address1
         companyID
         _version
         _deleted
@@ -97,6 +101,10 @@ export const getCustomer = /* GraphQL */ `
       id
       name
       surname
+      email
+      phone
+      mobile
+      address1
       companyID
       _version
       _deleted
@@ -117,6 +125,10 @@ export const listCustomers = /* GraphQL */ `
         id
         name
         surname
+        email
+        phone
+        mobile
+        address1
         companyID
         _version
         _deleted

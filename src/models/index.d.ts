@@ -15,6 +15,10 @@ export declare class Customer {
   readonly id: string;
   readonly name?: string;
   readonly surname?: string;
+  readonly email?: string;
+  readonly phone?: string;
+  readonly mobile?: string;
+  readonly address1?: string;
   readonly companyID?: string;
   constructor(init: ModelInit<Customer>);
   static copyOf(source: Customer, mutator: (draft: MutableModel<Customer>) => MutableModel<Customer> | void): Customer;

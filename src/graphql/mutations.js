@@ -58,6 +58,10 @@ export const createCustomer = /* GraphQL */ `
       id
       name
       surname
+      email
+      phone
+      mobile
+      address1
       companyID
       _version
       _deleted
@@ -76,6 +80,10 @@ export const updateCustomer = /* GraphQL */ `
       id
       name
       surname
+      email
+      phone
+      mobile
+      address1
       companyID
       _version
       _deleted
@@ -94,6 +102,10 @@ export const deleteCustomer = /* GraphQL */ `
       id
       name
       surname
+      email
+      phone
+      mobile
+      address1
       companyID
       _version
       _deleted

@@ -39,8 +39,7 @@ const CustomerAddDetails = (props) => {
     DataStore.save(
       new Customer({
         name : values.forename,
-        surname : values.surname,
-        companyID : company
+        surname : values.surname
       })
     );
     //props.history.push('/');

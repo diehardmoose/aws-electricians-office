@@ -41,11 +41,15 @@ export const onDeleteCompany = /* GraphQL */ `
   }
 `;
 export const onCreateCustomer = /* GraphQL */ `
-  subscription OnCreateCustomer {
-    onCreateCustomer {
+  subscription OnCreateCustomer($companyID: String!) {
+    onCreateCustomer(companyID: $companyID) {
       id
       name
       surname
+      email
+      phone
+      mobile
+      address1
       companyID
       _version
       _deleted
@@ -56,11 +60,15 @@ export const onCreateCustomer = /* GraphQL */ `
   }
 `;
 export const onUpdateCustomer = /* GraphQL */ `
-  subscription OnUpdateCustomer {
-    onUpdateCustomer {
+  subscription OnUpdateCustomer($companyID: String!) {
+    onUpdateCustomer(companyID: $companyID) {
       id
       name
       surname
+      email
+      phone
+      mobile
+      address1
       companyID
       _version
       _deleted
@@ -71,11 +79,15 @@ export const onUpdateCustomer = /* GraphQL */ `
   }
 `;
 export const onDeleteCustomer = /* GraphQL */ `
-  subscription OnDeleteCustomer {
-    onDeleteCustomer {
+  subscription OnDeleteCustomer($companyID: String!) {
+    onDeleteCustomer(companyID: $companyID) {
       id
       name
       surname
+      email
+      phone
+      mobile
+      address1
       companyID
       _version
       _deleted

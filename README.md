@@ -16,3 +16,5 @@ https://www.youtube.com/watch?v=JaVu-sS3ixg
 
 https://www.freecodecamp.org/news/a-complete-beginners-guide-to-react-router-include-router-hooks/#guarding-routes
 https://stackoverflow.com/questions/62384395/protected-route-with-react-router-v6
+
+https://github.com/aws-amplify/amplify-cli/issues/3480

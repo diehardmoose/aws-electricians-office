@@ -3,9 +3,23 @@ type Company @model {
   name: String!
 }
 
-type Customer @model {
+type Customer
+  @model
+  @auth(
+    rules: [
+      {
+        allow: owner
+        ownerField: "companyID"
+        identityClaim: "custom:companyID"
+      }
+    ]
+  ) {
   id: ID!
   name: String
   surname: String
+  email: String
+  phone: String
+  mobile: String
+  address1: String
   companyID: ID
 }

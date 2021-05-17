@@ -5,7 +5,6 @@ import {
   AppBar,
   Badge,
   Box,
-  Hidden,
   IconButton,
   Toolbar,
   Typography
@@ -30,7 +29,7 @@ const DashboardNavbar = ({ onMobileNavOpen, ...rest }) => {
           </Typography>
         </RouterLink>
         <Box sx={{ flexGrow: 1 }} />
-        <Hidden lgDown>
+        {/*<Hidden lgDown>*/}
           <IconButton color="inherit">
             <Badge
               badgeContent={notifications.length}
@@ -43,15 +42,15 @@ const DashboardNavbar = ({ onMobileNavOpen, ...rest }) => {
           <IconButton onClick={() => Auth.signOut()} color="inherit">
             <InputIcon />
           </IconButton> 
-        </Hidden>
-        <Hidden lgUp>
+        {/*</Hidden>
+        <Hidden lgUp>*/}
           <IconButton
             color="inherit"
             onClick={onMobileNavOpen}
           >
             <MenuIcon />
           </IconButton>
-        </Hidden>
+        {/*</Hidden>*/}
       </Toolbar>
     </AppBar>
   );
