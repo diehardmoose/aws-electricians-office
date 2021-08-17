@@ -6,7 +6,7 @@ import {
   CardContent,
   CardHeader,
   Divider,
-  TextField,
+  TextField
 } from "@material-ui/core";
 
 import { DataStore } from "@aws-amplify/datastore";
@@ -113,6 +113,7 @@ const CustomerEditDetails = (props) => {
         </Box>
       </Card>
     </form>
+
   );
 };
 

@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet";
 import { Box, Container } from "@material-ui/core";
 import CustomerEditDetails from "../../../src/components/customer/CustomerEditDetails";
 import { useParams } from "react-router-dom";
+import AddressList from '../../components/customer/AddressList';
 
 const EditCustomer = () => {
     const params = useParams()
@@ -20,6 +21,7 @@ const EditCustomer = () => {
       >
         <Container maxWidth="lg">
           <CustomerEditDetails id={params.id} />
+          <AddressList />
         </Container>
       </Box>
     </>
