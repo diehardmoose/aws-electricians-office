@@ -1,50 +1,124 @@
-import { Navigate } from 'react-router-dom';
-import DashboardLayout from '../src/components/DashboardLayout';
-import MainLayout from '../src/components/MainLayout';
-import Account from '../src/pages/Account';
-import CustomerList from '../src/pages/customer/CustomerList';
-import Dashboard from '../src/pages/Dashboard';
-import Login from '../src/pages/Login';
-import NotFound from '../src/pages/NotFound';
-import ProductList from '../src/pages/ProductList';
-import Register from '../src/pages/Register';
-import Settings from '../src/pages/Settings';
-import CompanySettings from '../src/pages/settings/CompanySettings';
-import SignIn from './component/auth/signIn'
-//import UpdateCustomer from './component/customer/updateCustomer'
-import AddCustomer from '../src/pages/customer/AddCustomer'
-import EditCustomer from '../src/pages/customer/EditCustomer'
+/*!
 
-const routes = (authState) => [
+=========================================================
+* Argon Dashboard React - v1.2.1
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/argon-dashboard-react
+* Copyright 2021 Creative Tim (https://www.creative-tim.com)
+* Licensed under MIT (https://github.com/creativetimofficial/argon-dashboard-react/blob/master/LICENSE.md)
+
+* Coded by Creative Tim
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+*/
+import Index from "views/Index.js";
+import Profile from "views/examples/Profile.js";
+import Maps from "views/examples/Maps.js";
+import Register from "views/examples/Register.js";
+import Login from "views/examples/Login.js";
+import ConfirmUser from "views/examples/ConfirmUser";
+import Tables from "views/examples/Tables.js";
+import Icons from "views/examples/Icons.js";
+import CustomerList from "views/examples/CustomerList.js";
+import QuoteList from "views/examples/QuoteList.js";
+import InvoiceList from "views/examples/InvoiceList.js";
+import CertificateList from "views/examples/CertificateList.js";
+
+var routes = [
   {
-    path: 'app',
-    //element: <DashboardLayout />,
-    element: authState=='LoggedIn' ? <DashboardLayout /> : <Navigate to="/login" />,
-    children: [
-      { path: 'account', element: <Account /> },
-      { path: 'customers', element: <CustomerList /> },
-      { path: 'addcustomer', element: <AddCustomer /> },
-      { path: 'editcustomer/:id', element: <EditCustomer /> },
-      { path: 'dashboard', element: <Dashboard /> },
-      { path: 'products', element: <ProductList /> },
-      { path: 'companysettings', element: <CompanySettings /> },
-      { path: 'settings', element: <Settings /> },
-      //{ path: 'updatecustomer/:id', element: <UpdateCustomer /> },
-      { path: '*', element: <Navigate to="/404" /> }
-    ]
+    path: "/index",
+    name: "Dashboard",
+    icon: "ni ni-tv-2 text-primary",
+    component: Index,
+    layout: "/admin",
   },
   {
-    path: '/',
-    element: <MainLayout />,
-    children: [
-      { path: 'login', element: <Login /> },
-      { path: 'signin', element: <SignIn /> },
-      { path: 'register', element: <Register /> },
-      { path: '404', element: <NotFound /> },
-      { path: '/', element: <Navigate to="/app/dashboard" /> },
-      { path: '*', element: <Navigate to="/404" /> }
-    ]
-  }
+    path: "/customers",
+    name: "Customer",
+    icon: "ni ni-circle-08 text-primary",
+    component: CustomerList,
+    layout: "/admin",
+  },  
+  {
+    path: "/quotes",
+    name: "Quotes",
+    icon: "ni ni ni-single-copy-04 text-primary",
+    component: QuoteList,
+    layout: "/admin",
+  },  
+  {
+    path: "/invoices",
+    name: "Invoices",
+    icon: "ni ni ni ni-books text-primary",
+    component: InvoiceList,
+    layout: "/admin",
+  },  
+  {
+    path: "/certificates",
+    name: "Certificates",
+    icon: "ni ni ni ni-paper-diploma text-primary",
+    component: CertificateList,
+    layout: "/admin",
+  },  
+  {
+    path: "/icons",
+    name: "Icons",
+    icon: "ni ni-planet text-blue",
+    component: Icons,
+    layout: "/admin",
+    invisible: true,    
+  },
+  {
+    path: "/maps",
+    name: "Maps",
+    icon: "ni ni-pin-3 text-orange",
+    component: Maps,
+    layout: "/admin",
+    invisible: true,
+  },
+  {
+    path: "/user-profile",
+    name: "User Profile",
+    icon: "ni ni-single-02 text-yellow",
+    component: Profile,
+    layout: "/admin",
+    invisible: true,    
+  },
+  {
+    path: "/tables",
+    name: "Tables",
+    icon: "ni ni-bullet-list-67 text-red",
+    component: Tables,
+    layout: "/admin",
+    invisible: true,    
+  },
+  {
+    path: "/login",
+    name: "Login",
+    icon: "ni ni-key-25 text-info",
+    component: Login,
+    layout: "/auth",
+    //invisible: true,
+  },
+  {
+    path: "/register",
+    name: "Register",
+    icon: "ni ni-circle-08 text-pink",
+    component: Register,
+    layout: "/auth",
+    invisible: true,
+  },
+  {
+    path: "/confirmuser/:id",
+    name: "ConfirmUser",
+    icon: "ni ni-key-25 text-info",
+    component: ConfirmUser,
+    layout: "/auth",
+    invisible: true,
+  },  
 ];
-
 export default routes;
